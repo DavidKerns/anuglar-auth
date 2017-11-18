@@ -7,6 +7,7 @@
     "reload": "nodemon ./bin/ww"
   },
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "body-parser": "~1.17.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
@@ -14,6 +15,7 @@
     "express": "~4.15.2",
     "mongoose": "^4.13.4",
     "morgan": "~1.8.1",
+    "passport-local": "^1.0.0",
     "serve-favicon": "~2.4.2"
   },
   "devDependencies": {
