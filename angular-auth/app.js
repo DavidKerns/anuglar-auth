@@ -27,7 +27,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use (
   session({
-    secret: "",
+    secret: "This is a secret",
     resave: true,
     saveUninitialiazed: true
 

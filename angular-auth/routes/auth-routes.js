@@ -23,15 +23,35 @@ const password = req.body.password;
 
     const theUser = new User ({
       username: username,
-      password: hasPass
+      password: hashPass
     });
     theUser.save((err) =>{
       if (err){
         res.status(500).json({message: "Something went wrong"});
       }
-      res.status(200).json({theUser});
+      req.login(theUser, (err) =>{
+        res.status(200).json({theUser});
+      });
+
     });
   });
 });
+
+router.post('/login', (req, res, next) =>{
+  const username = req.body.username;
+  const password = req.body.password;
+
+  User.findOne({username: username}, (err, foundUser) => {
+    if (foundUser === null) {
+        res.status(400).json({message: "Incorrect Username"});
+        return;
+    }
+    if (!bcrypt.compareSync(password, foundUser.password)){
+      res.status(400).json({message: "Incorrect password"});
+      return;
+    }
+  });
+});
+
 
 module.exports = router;
