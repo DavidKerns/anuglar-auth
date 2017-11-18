@@ -50,6 +50,10 @@ router.post('/login', (req, res, next) =>{
       res.status(400).json({message: "Incorrect password"});
       return;
     }
+    req.login(foundUser, (err) => {
+      foundUser.password = undefined;
+      res.status(200).json(foundUser);
+    });
   });
 });
 
