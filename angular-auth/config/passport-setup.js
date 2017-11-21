@@ -11,5 +11,6 @@ passport.deserializeUser((userIdFromSession, cb) => {
       cb(err);
       return;
     }
+    cb(null, userDocument);
   });
 });
